@@ -15,12 +15,17 @@ int dragonhp = 1000;
 void controlle();
 void shop();
 void dragon();
+void teleport();
 void controlle() {
     if (znak == 'w') Y++;
     if (znak == 'd') X++;
     if (znak == 's') Y--;
     if (znak == 'a') X--;
     return;
+}
+void teleport() {
+	cout<<"В В Е Д И Т Е	К О О Р Д И Н А Т Ы	Т Е Л Е П О Р Т А Ц И И"<<endl;
+	cin >> X >> Y;
 }
 void shop() {
     string in = " ";
@@ -77,6 +82,9 @@ int main() {
 	}
 	if (X >= 70 && Y <= 80 && X <= 100 && Y >= 0) {
 		dragon();
+	}
+	if (X % 30 == 0 && X != 0 || Y % 30 == 0 && Y != 0) {
+		teleport();
 	}
     }
 }
