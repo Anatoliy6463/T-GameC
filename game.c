@@ -15,10 +15,7 @@ int main(int argc, char** argv)
   money = 100;
   while (input != 'q')
   {
-    if (input == 'w' || input == 'a' || input == 's' || input == 'd')
-    {
       movement(X, Y, input);
-    }
     if (input == 'p' || input == 'e')
     {
       persikinteract(X, Y, persiki, hunger, input);
