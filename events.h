@@ -21,8 +21,8 @@ void shop(int money, int ta, int persiki)
 }
 void check(int ta, int result) 
 {
-	if (ta = 0)	result = 0;
-	if (ta = 1)	result = 1;
+	if (ta == 0)	result = 0;
+	if (ta == 1)	result = 1;
 }
 void teleport(int X, int Y, int result, int money)
 {
@@ -43,7 +43,7 @@ void heal(int hunger, int hp)
 }
 void damage(int hunger, int hp)
 {
-  if (hunger > 100)
+  if (hunger >= 100)
   {
     hunger = 100;
     hp -= 15;
