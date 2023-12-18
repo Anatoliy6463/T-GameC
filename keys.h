@@ -1,15 +1,6 @@
 #include <stdio.h>
 /*Library for controls in T-GameC
 Copyright (C) 2023  Andesaurus-Sesto*/
-void movement(int X, int Y, int in)
-{
-  in = getchar();
-  if (in == 'w') Y++;
-  if (in == 'a') X++;
-  if (in == 's') Y++;
-  if (in == 'd') X++;
-  return;
-}
 void persikinteract(int X, int Y, int persiki, int hunger, int in)
 {
     if (X % 9 == 0 && X != 0 || Y % 9 == 0 && Y != 0) ++persiki;  
