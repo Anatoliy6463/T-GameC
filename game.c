@@ -1,60 +1,45 @@
 #include <stdio.h>
-/*Simple console game made for fun
-Copyright (C) 2023  Andesaurus-Sesto*/
 #include "keys.h"
 #include "events.h"
-int main(int argc, char** argv)
+/*Simple console game in C made for fun
+Copyright (C) 2023  Andesaurus-Sesto*/
+int main()
 {
-  int X; int Y; char input; int persiki; int hp; int hunger; int ta; int money; int result;
-  X = 1;
-  Y = 1;
-  hp = 100;
-  hunger = 0;
-  ta = 0;
-  money = 100;
-  while (input != 'q')
+  int X = 1;
+  int Y = 1;
+  int inp;
+  int persiki = 0;
+  int hunger = 0;
+  int hp = 100;
+  int money = 50;
+  int ta = 0;
+  int result;
+  while (inp != 'q')
   {
-      scanf("%c", input);
-      printf("Координаты:X=%d Y=%d\nЗдоровье:%d\nУровень голода:%d\nУ вас %d либрбаксов\n", X, Y, hp, hunger, money);
-      movement(X, Y, input);
-    if (input == 'p' || input == 'e')
+    inp = getchar();
+    printf("Координаты:%d;%d\nГолод:%d\nЗдоровье:%d\nКоличество либрбаксов:%d\n", X, Y, hunger, hp, money);
+    if (inp == 'w') Y++;
+    if (inp == 'a') X--;
+    if (inp == 's') Y--;
+    if (inp == 'd') X++;
+    persikinteract(X, Y, persiki, hunger, inp);
+    if (X % 15 == 0 && Y % 15 == 0)
     {
-      persikinteract(X, Y, persiki, hunger, input);
-    }
-    if (hunger < 0)
-    {
-      heal(hunger, hp);
-    }
-    if (hunger > 100)
-    {
-      damage(hunger, hp);
-    }
-    if (X % 45 == 0 && Y % 10 == 0)
-    {
+      break;
       shop(money, ta, persiki);
+      continue;
     }
-    if (X == 120 && Y == 100)
+    if (hunger < 0) heal(hunger, hp);
+    if (hunger > 100) damage(hunger, hp);
+    if (hp < 0) 
     {
-      teleport(X, Y, result, money);
+      die();
+      break;
     }
-    if (input == 't')
+    if (inp == 't') 
     {
       check(ta, result);
-      if (result == 1)
-      {
-	teleport(X, Y, result, money);
-      }
-    }
-    hunger++;
-    if (input == ']')
-    {
-      die();
-      break;
-    }
-    if (hp == 0)
-    {
-      die();
-      break;
+      if (result == 1) teleport(X, Y, result, money);  
     }
   }
 }
