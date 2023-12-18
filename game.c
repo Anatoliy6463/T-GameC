@@ -5,8 +5,7 @@ Copyright (C) 2023  Andesaurus-Sesto*/
 #include "events.h"
 int main(int argc, char** argv)
 {
-  int X; int Y; int input; int persiki; int hp; int hunger; int ta; int money; int result;
-  input = getchar();
+  int X; int Y; char input; int persiki; int hp; int hunger; int ta; int money; int result;
   X = 1;
   Y = 1;
   hp = 100;
@@ -15,6 +14,8 @@ int main(int argc, char** argv)
   money = 100;
   while (input != 'q')
   {
+      scanf("%c", input);
+      printf("Координаты:X=%d Y=%d\nЗдоровье:%d\nУровень голода:%d\nУ вас %d либрбаксов\n", X, Y, hp, hunger, money);
       movement(X, Y, input);
     if (input == 'p' || input == 'e')
     {
@@ -55,7 +56,5 @@ int main(int argc, char** argv)
       die();
       break;
     }
-    printf("Координаты:X=%d Y=%d\nЗдоровье:%d\nУровень голода:%d\nУ вас %d либрбаксов\n", X, Y, hp, hunger, money);
-    input = getchar();
   }
 }
